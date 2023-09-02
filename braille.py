@@ -64,6 +64,7 @@ letterToImgPath = {
     "y": "images/y.png",
     "z": "images/z.png",
     " ": "images/void.png",
+    "#": "images/number.png",
 }
 
 def addImages(list_im):
@@ -89,89 +90,13 @@ def textToBraille(text):
     final_string = ''
     for char in text:
         char = char.lower()
-        if char == "a":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["a"]))
-        elif char == "b":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["b"]))
-        elif char == "c":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["c"]))
-        elif char == "d":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["d"]))
-        elif char == "e": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["e"]))
-        elif char == "f": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["f"]))
-        elif char == "g":
-            final_string = final_string + ascii_braille[char] 
-            print(char + " " + str(charToArray["g"]))
-        elif char == "h": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["h"]))
-        elif char == "i":
-            final_string = final_string + ascii_braille[char] 
-            print(char + " " + str(charToArray["i"]))
-        elif char == "j": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["j"]))
-        elif char == "k": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["k"]))
-        elif char == "l": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["l"]))
-        elif char == "m": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["m"]))
-        elif char == "n": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["n"]))
-        elif char == "o":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["o"]))
-        elif char == "p": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["p"]))
-        elif char == "q": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["q"]))
-        elif char == "r": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["r"]))
-        elif char == "s": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["s"]))
-        elif char == "t": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["t"]))
-        elif char == "u": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["u"]))
-        elif char == "v": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["v"]))
-        elif char == "w":
-            final_string = final_string + ascii_braille[char] 
-            print(char + " " + str(charToArray["w"]))
-        elif char == "x": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["x"]))
-        elif char == "y": 
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["y"]))
-        elif char == "z":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray["z"]))
-        elif char == " ":
-            final_string = final_string + ascii_braille[char]
-            print(char + " " + str(charToArray[" "]))
+        if char in charToArray.keys():
+            final_string += ascii_braille[char]
+            print(char + " " + str(charToArray[char]))
     print(final_string)
     return final_string
+    
+    
 def textToSpeech(text):
     if ((os.system("espeak '" + str(text) + "'")) != 0):
         print("Client error: system does not support text-to-audio // may need to download [espeak] command line package")
@@ -200,4 +125,4 @@ def imageToBraille(img):
     textToBraille(imageToText(img))
 
 
-imageToText("puretext.jpeg")
+#imageToText("puretext.jpeg")
